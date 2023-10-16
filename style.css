@@ -1,0 +1,256 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1.6rem;
+  margin: 0;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  min-height: 100vh;
+  min-width: 790px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+blockquote,
+address,
+article,
+aside,
+details,
+dialogue,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+header,
+hr,
+main,
+nav,
+pre,
+section,
+table,
+p {
+  margin-top: 0;
+  margin-block-start: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  /* This means that it can be less than 100% of the width of its parent IF the image is INTRINSICALLY smaller */
+  max-width: 100%;
+
+  height: auto;
+  /* 'auto' is the initial value for height BUT for images (and other elements which have an intrinic height) that is not the case. To make an image responsive you set one dimension (usually width) to [max-]width: 100%; and the other to 'auto' to ensure it keeps aspect ratio. 'auto' basically tells the browser to decide. */
+}
+
+/* Because we us <ul>s for lists that we don't always want bulletted. */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* To make actual bulletted lists */
+ul.typographic {
+  list-style: initial;
+  padding-inline-start: 20px;
+}
+
+/* stops icons being the target of JS click events */
+.btn *,
+button * {
+  pointer-events: null;
+  user-select: none;
+}
+
+/* inherits the font */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*****************************
+* ACCESSIBILITY
+******************************/
+/* For 'accessibility text'. If your button only has an image inside it that isn't good for accessibility. Put a span inside there and give it this class and put some descriptive text for what the button does into the span. */
+
+.visually-hidden,
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  -webkit-clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  clip-path: auto;
+  -webkit-clip-path: auto;
+  white-space: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: Caudex, sans-serif;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 5rem;
+}
+body {
+  font-family: Quicksand, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header div {
+  width: 33.33%;
+}
+
+.header.title {
+  text-align: center;
+}
+
+.header.logo {
+  text-align: start;
+  padding-left: 15px;
+}
+
+.header.nav {
+  text-align: end;
+  padding-right: 15px;
+}
+
+a {
+  padding: 5px;
+}
+
+nav a:hover,
+footer a:hover {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 7px;
+  text-decoration: none;
+}
+.homepage {
+  background-image: url(./images/homepage_background.jpeg);
+  background-size: cover;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.homepage_text {
+  position: relative;
+  top: 190px;
+  text-align: center;
+}
+
+.photo_wall {
+  min-width: 1050px;
+  width: 70vw;
+  margin: auto;
+}
+
+.photo_wall div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px;
+}
+
+.photos a {
+  margin: 5px;
+}
+
+img {
+  width: 300px;
+  /* margin: 10px; */
+}
+
+img:hover {
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(255, 248, 239);
+}
+
+.contact_page {
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+footer {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+footer a {
+  text-decoration: underline;
+}
