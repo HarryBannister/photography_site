@@ -1,8 +1,12 @@
+/* CSS STARTER */
+
 html {
   box-sizing: border-box;
-  font-size: 62.5%;
+  font-size: 62.5%; /* Mostly equivalates to 10px but allows users accessibility zoom settings to work*/
+  /* font-size: 10px; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /*   color-scheme: dark light; */
   min-height: 100vh;
 }
 
@@ -22,9 +26,9 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   min-height: 100vh;
-  min-width: 790px;
 }
 
+/* Try to keep your margins going in one direction to avoid margin collapase or grounding. I switch all the top margins off to avoid this issue. */
 h1,
 h2,
 h3,
@@ -63,6 +67,7 @@ p {
 a {
   color: inherit;
   text-decoration: none;
+  /* You MUST make sure that links stand out from nomal text though...*/
 }
 
 img,
@@ -90,11 +95,11 @@ ul.typographic {
 }
 
 /* stops icons being the target of JS click events */
-.btn *,
+/* .btn *,
 button * {
   pointer-events: null;
   user-select: none;
-}
+} */
 
 /* inherits the font */
 input,
@@ -104,140 +109,95 @@ select {
   font: inherit;
 }
 
-/*****************************
-* ACCESSIBILITY
-******************************/
-/* For 'accessibility text'. If your button only has an image inside it that isn't good for accessibility. Put a span inside there and give it this class and put some descriptive text for what the button does into the span. */
-
-.visually-hidden,
-.sr-only {
-  border: 0;
-  clip: rect(0 0 0 0);
-  clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
-  -webkit-clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap;
-}
-.sr-only-focusable:active,
-.sr-only-focusable:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  overflow: visible;
-  clip: auto;
-  clip-path: auto;
-  -webkit-clip-path: auto;
-  white-space: normal;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-h1,
-h2,
-h3 {
+body {
   font-family: Caudex, sans-serif;
-  margin-bottom: 0;
+}
+
+/* HEADER */
+
+h1 {
+  font-size: 2.25rem;
+  margin: 0;
 }
 
 h2 {
-  font-size: 5rem;
+  font-size: 3rem;
 }
-body {
-  font-family: Quicksand, sans-serif;
+
+p,
+header {
+  font-size: 1.3rem;
 }
 
 header {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
+  margin: 10px;
 }
 
-header div {
-  width: 33.33%;
+header a {
+  padding: 2px;
 }
 
-.header.title {
-  text-align: center;
+header a:hover {
+  text-decoration: underline;
 }
 
-.header.logo {
-  text-align: start;
-  padding-left: 15px;
-}
-
-.header.nav {
-  text-align: end;
-  padding-right: 15px;
-}
-
-a {
+.logo {
   padding: 5px;
+  margin-right: 18px;
 }
 
-nav a:hover,
-footer a:hover {
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 7px;
-  text-decoration: none;
+.logo img {
+  height: 35px;
 }
+
+.title {
+  padding: 4px;
+}
+
+/* HOMEPAGE */
+
 .homepage {
   background-image: url(./images/homepage_background.jpeg);
   background-size: cover;
-  height: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 20px;
+  background-position: center;
+  height: 100vh;
 }
 
 .homepage_text {
-  position: relative;
-  top: 190px;
+  padding-top: 200px;
   text-align: center;
 }
 
-.photo_wall {
-  min-width: 1050px;
-  width: 70vw;
-  margin: auto;
+.homepage_text p {
+  margin: 0;
 }
 
-.photo_wall div {
+/* PHOTOGRAPHS PAGE */
+
+.img_container img {
+  width: 300px;
+}
+
+.photo_wall {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 40px;
 }
 
-.photos a {
-  margin: 5px;
+.img_container {
+  margin: 5px 5px 5px 5px;
 }
 
-img {
-  width: 300px;
-  /* margin: 10px; */
+.img_overlay {
+  padding: 5px;
+  text-align: center;
 }
 
-img:hover {
-  border-style: solid;
-  border-width: 5px;
-  border-color: rgb(255, 248, 239);
-}
+/* CONTACT PAGE */
 
 .contact_page {
   height: 750px;
@@ -246,6 +206,9 @@ img:hover {
   align-items: center;
   text-align: center;
 }
+
+/* FOOTER */
+
 footer {
   text-align: center;
   margin-bottom: 10px;
@@ -253,4 +216,122 @@ footer {
 
 footer a {
   text-decoration: underline;
+}
+
+/* MEDIA QUERIES */
+
+/* TABLET */
+@media screen and (min-width: 700px) {
+  h1 {
+    font-size: 2.6rem;
+  }
+
+  p,
+  header {
+    font-size: 1.5rem;
+  }
+
+  header {
+    justify-content: space-between;
+  }
+
+  .menu {
+    text-align: end;
+  }
+
+  .logo,
+  .menu {
+    width: 31%;
+    margin-right: 0;
+  }
+
+  header a {
+    padding: 5px;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+
+  .photo_wall {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+/* DESKTOP */
+
+@media screen and (min-width: 1100px) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  p,
+  header {
+    font-size: 1.7rem;
+  }
+
+  .logo,
+  .menu {
+    width: 28%;
+  }
+
+  .logo {
+    padding-left: 30px;
+  }
+
+  .logo img {
+    height: 80px;
+  }
+
+  .menu {
+    padding-right: 20px;
+  }
+
+  h2 {
+    font-size: 3.5rem;
+  }
+
+  .homepage_text {
+    padding-top: 145px;
+  }
+
+  .img_container {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    border: 3px;
+    border-style: solid;
+    border-color: #ffffff;
+  }
+
+  .img_container:hover {
+    border-color: #efd5c0;
+  }
+
+  .img_container img {
+    width: 400px;
+  }
+
+  .img_overlay {
+    background-color: white;
+    opacity: 0.6;
+    height: 100%;
+
+    font-size: 1.8rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(100%);
+  }
+
+  .img_container:hover .img_overlay {
+    transform: translateY(0%);
+  }
 }
