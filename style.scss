@@ -1,4 +1,5 @@
 /* CSS STARTER */
+
 html {
   box-sizing: border-box;
   font-size: 62.5%; /* Mostly equivalates to 10px but allows users accessibility zoom settings to work*/
@@ -76,6 +77,7 @@ video {
   display: block;
   /* This means that it can be less than 100% of the width of its parent IF the image is INTRINSICALLY smaller */
   max-width: 100%;
+
   height: auto;
   /* 'auto' is the initial value for height BUT for images (and other elements which have an intrinic height) that is not the case. To make an image responsive you set one dimension (usually width) to [max-]width: 100%; and the other to 'auto' to ensure it keeps aspect ratio. 'auto' basically tells the browser to decide. */
 }
@@ -98,6 +100,7 @@ button * {
   pointer-events: null;
   user-select: none;
 } */
+
 /* inherits the font */
 input,
 button,
@@ -106,68 +109,85 @@ select {
   font: inherit;
 }
 
+// MY CSS
+
+@mixin margin($margin-top, $margin-bottom, $margin-left, $margin-right) {
+  margin-top: $margin-top;
+  margin-bottom: $margin-bottom;
+  margin-left: $margin-left;
+  margin-right: $margin-right;
+}
+
+@mixin padding($padding) {
+  padding: $padding;
+}
+
 body {
   font-family: Caudex, sans-serif;
 }
 
-.flex-center,
-.contact_page {
+.flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-.flex-wrap,
-.photo_wall,
-header {
+.flex-wrap {
   display: flex;
   flex-wrap: wrap;
 }
 
-.link-hover,
-footer a:hover,
-header a:hover {
+.link-hover {
   text-decoration: underline;
 }
 
-h1 {
-  font-size: 1.9rem;
+// HEADER
+
+@mixin font-sizes($font_size) {
+  font-size: $font_size;
   margin: 1px;
 }
 
+h1 {
+  @include font-sizes(1.9rem);
+}
+
 h2 {
-  font-size: 3rem;
-  margin: 1px;
+  @include font-sizes(3rem);
 }
 
 p,
 header {
-  font-size: 1.3rem;
-  margin: 1px;
+  @include font-sizes(1.3rem);
 }
 
 header {
+  @extend .flex-wrap;
   align-items: center;
   justify-content: flex-end;
   margin: 10px;
+
+  a {
+    padding: 2px;
+  }
+
+  a:hover {
+    @extend .link-hover;
+  }
 }
-header a {
-  padding: 2px;
-}
+
 .logo {
-  padding: 0px;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 18px;
-}
-.logo img {
-  height: 35px;
+  @include padding(0px);
+  @include margin(0, 0, 0, 18px);
+
+  img {
+    height: 35px;
+  }
 }
 
 .title {
-  padding: 4px;
+  @include padding(4px);
 }
 
 .burger_menu {
@@ -179,26 +199,32 @@ header a {
   display: none;
 }
 
-.homepage {
-  background-image: url(./images/homepage_background.jpeg);
+// HOMEPAGE
+
+@mixin background_image {
   background-size: cover;
   background-position: center;
   height: 100vh;
+}
+
+.homepage {
+  background-image: url(./images/homepage_background.jpeg);
+  @include background_image;
 }
 
 .homepage_text {
   padding-top: 20vh;
   text-align: center;
 }
+// PHOTOGRAPHS PAGE
 
 .photo_wall {
+  @extend .flex-wrap;
   justify-content: center;
-}
-.photo_wall .img_container {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
+
+  .img_container {
+    @include margin(5px, 5px, 5px, 5px);
+  }
 }
 
 .img_container img {
@@ -206,76 +232,100 @@ header a {
 }
 
 .img_overlay {
-  padding: 5px;
+  @include padding(5px);
   text-align: center;
 }
 
+// CONTACT PAGE
+
 .contact_page {
   height: 750px;
+  @extend .flex-center;
 }
+
+// FOOTER
 
 footer {
   text-align: center;
   margin-bottom: 10px;
+
+  a:hover {
+    @extend .link-hover;
+  }
 }
+
+// MEDIA QUERIES
+
 @media screen and (min-width: 700px) {
   h1 {
-    font-size: 2.6rem;
-    margin: 1px;
+    @include font-sizes(2.6rem);
   }
+
   p,
   header {
-    font-size: 1.5rem;
-    margin: 1px;
+    @include font-sizes(1.5rem);
   }
+
   header {
     justify-content: space-between;
   }
+
   .menu {
     display: block;
     text-align: end;
   }
+
   .burger_menu {
     display: none;
   }
+
   .logo,
   .menu {
     width: 31%;
   }
+
   header a {
-    padding: 5px;
+    @include padding(5px);
   }
+
   .logo img {
     height: 50px;
   }
 }
+
+// DESKTOP
+
 @media screen and (min-width: 1100px) {
   h1 {
-    font-size: 4rem;
-    margin: 1px;
+    @include font-sizes(4rem);
   }
+
   p,
   header {
-    font-size: 1.7rem;
-    margin: 1px;
+    @include font-sizes(1.7rem);
   }
+
   .logo,
   .menu {
     width: 28%;
   }
+
   .logo {
     padding-left: 30px;
   }
+
   .logo img {
     height: 80px;
   }
+
   .menu {
     padding-right: 20px;
   }
+
   h2 {
-    font-size: 3.5rem;
-    margin: 1px;
+    @include font-sizes(3.5rem);
   }
+
   .img_container {
     display: flex;
     position: relative;
@@ -284,27 +334,38 @@ footer {
     border-style: solid;
     border-color: #ffffff;
   }
+
   .img_container:hover {
     border-color: #efd5c0;
   }
+
   .img_container img {
     width: 400px;
   }
-  .img_overlay {
+
+  @mixin img_overlay {
     background-color: white;
     opacity: 0.6;
     height: 100%;
+
     font-size: 1.8rem;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     transform: translateY(100%);
   }
+
+  .img_overlay {
+    @include img_overlay();
+  }
+
   .img_container:hover .img_overlay {
     transform: translateY(0%);
   }
-} /*# sourceMappingURL=style.css.map */
+}
