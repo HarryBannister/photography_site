@@ -157,15 +157,14 @@ h2 {
   @include font-sizes(3rem);
 }
 
-p,
-header {
+p {
   @include font-sizes(1.3rem);
 }
 
 header {
   @extend .flex-wrap;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-end;
   margin: 10px;
 
   a {
@@ -177,9 +176,9 @@ header {
   }
 }
 
-.logo {
-  @include padding(0px);
-  @include margin(0, 0, 0, 18px);
+.logo,
+.burger_menu {
+  @include margin(0, 0, 5px, 5px);
 
   img {
     height: 35px;
@@ -190,7 +189,7 @@ header {
   @include padding(4px);
 }
 
-.burger_menu {
+.burger_menu img {
   height: 25px;
   margin: 6px;
 }
@@ -216,6 +215,7 @@ header {
   padding-top: 20vh;
   text-align: center;
 }
+
 // PHOTOGRAPHS PAGE
 
 .photo_wall {
@@ -261,8 +261,7 @@ footer {
     @include font-sizes(2.6rem);
   }
 
-  p,
-  header {
+  p {
     @include font-sizes(1.5rem);
   }
 
@@ -270,18 +269,14 @@ footer {
     justify-content: space-between;
   }
 
-  .menu {
-    display: block;
-    text-align: end;
+  .logo,
+  .burger_menu {
+    width: 20%;
   }
 
   .burger_menu {
-    display: none;
-  }
-
-  .logo,
-  .menu {
-    width: 31%;
+    display: flex;
+    justify-content: flex-end;
   }
 
   header a {
@@ -297,11 +292,10 @@ footer {
 
 @media screen and (min-width: 1100px) {
   h1 {
-    @include font-sizes(4rem);
+    @include font-sizes(3.5rem);
   }
 
-  p,
-  header {
+  p {
     @include font-sizes(1.7rem);
   }
 
@@ -319,7 +313,17 @@ footer {
   }
 
   .menu {
+    display: block;
+    text-align: end;
     padding-right: 20px;
+  }
+
+  .burger_menu {
+    display: none;
+  }
+
+  .homepage_text {
+    padding-top: 17vh;
   }
 
   h2 {
